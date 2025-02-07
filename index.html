@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Sigma Brainrot Level Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #2d2d2d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .question {
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ultimate Sigma Brainrot Level Checker</h1>
+        <form id="sigmaForm">
+            <div class="question active" id="question1">
+                <label for="grindset">How often do you focus on your grind?</label>
+                <select id="grindset" name="grindset">
+                    <option value="3">24/7, no breaks (Sigma Grindset)</option>
+                    <option value="2">Only when inspired (Mid Grindset)</option>
+                    <option value="1">What's a grind? (No Grindset)</option>
+                </select>
+                <button type="button" onclick="nextQuestion(1, 2)">Next</button>
+            </div>
+            
+            <div class="question" id="question2">
+                <label for="confidence">How confident are you in your abilities?</label>
+                <select id="confidence" name="confidence">
+                    <option value="3">Unstoppable (Gigachad Energy)</option>
+                    <option value="2">Pretty confident (Average Enjoyer)</option>
+                    <option value="1">I doubt myself often (No Confidence)</option>
+                    <option value="-1">I am a failure</option>
+                    <option value ="10000000">I am the best(better than Unstoppable)</option>
+                    <option value ="-10000000">I am the worst</option>
+                    <option value ="-100000000">I am the worst of the worst</option>
+                    <option value ="1000000000">I have the best gyat</option>
+                </select>
+                <button type="button" onclick="nextQuestion(2, 20)">Next</button>
+            </div>
+            <div class="question" id="question20">
+                <label for="final">Final question: Are you a Sigma or just brainrotted?</label>
+                <select id="final" name="final">
+                    <option value="3">I am the Sigma (Ultra Brainrot)</option>
+                    <option value="2">Maybe a little brainrotted (Mid Brainrot)</option>
+                    <option value="1">I don't know what's happening (No Brainrot)</option>
+                    <option value="-1">I hate brainrot</option>
+                    <option value="10000000">👑I am Gigachad👑(only if you are serious)</option>
+                    <option value="-10000000">I am the worst of the worst Brainrot is bad I just hate it bro</option>
+                </select>
+                <button type="button" onclick="calculateSigmaLevel()">Get Results</button>
+            </div>
+        </form>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function nextQuestion(current, next) {
+            const currentQuestion = document.getElementById(`question${current}`);
+            const nextQuestion = document.getElementById(`question${next}`);
+            
+            if (currentQuestion) {
+                currentQuestion.classList.remove('active');
+            }
+            if (nextQuestion) {
+                nextQuestion.classList.add('active');
+            }
+        }
+
+        function calculateSigmaLevel() {
+            let totalScore = 0;
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                totalScore += parseInt(select.value) || 0;
+            });
+
+            let sigmaLevel;
+            if (totalScore >= 10000000) {
+                sigmaLevel = "You are giga chad (Ultimate jawline) your sigma score is 10000000!!!(quick question do you mew?)PS. you are the best";
+            } else if (totalScore >= 9) {
+                sigmaLevel = "Ultra Sigma Gigachad (Peak Brainrot)your sigma score is 9(your doing great keep it up)";
+            } else if (totalScore >= 6) {
+                sigmaLevel = "Mid Sigma (Average Brainrot Enjoyer your sigma score is 6(keep it up))";
+            } else if (totalScore >= 3) {
+                sigmaLevel = "Beta (No Grindset your sigma score is 3( im not gona be rude but you need to work on your grindset)";
+            } else if (totalScore >= 0) {
+                sigmaLevel = "SERIOUSLY I HATE YOU bro what is your name your sigma score is 0 (sorry for being rude but this is the truth bro)";
+            } else if (totalScore >= -3) {
+                sigmaLevel = "No Sigma (What is wrong with you) your sigma score is -3 ~ -10000000000000(quit being a loser)";
+            }
+            
+            document.getElementById('result').textContent = sigmaLevel;
+        }
+    
+    </script>
+    <footer style="color: #666; margin-top: 20px; font-size: 12px;">
+        Brainrot Chronicles &copy; 2025 All Rights Reserved
+    </footer>
+</body>
+</html>
